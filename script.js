@@ -293,7 +293,7 @@ const data = [
         "text9": "• Fields like phone number accept strings; names allow alphanumeric. <br> • Impact: Compromises data integrity and accuracy. <br> • Solution: Enforce proper data format validation.",
     },
     {
-        "section": "Recommendations",
+        "section": "Suggestions",
         "heading": "Available Time",
         "text": "• Seconds in 'Available Time' are unnecessary. <br> • Suggestion: Use the doctor’s status to determine availability.",
 
@@ -335,7 +335,7 @@ contentDiv.innerHTML = data.map((item, itemIndex) => {
                     <div class="page content-container" style="background-color: ${randomColor};">
                         <!-- Left: Image -->
                         <div class="image-container">
-                            ${item[imgKey] ? `<img class="content-image" src="${item[imgKey]}" alt="image">` : ""}
+                            ${item[imgKey] ? `<img class="content-image" src="${item[imgKey]}" alt="image"  loading="lazy">` : ""}
                         </div>
     
                         <!-- Right: Subheading & Text -->
@@ -350,39 +350,4 @@ contentDiv.innerHTML = data.map((item, itemIndex) => {
     })();
 
 }).join('');
-// const contentDiv = document.getElementById("content");
-// const colors = ["#b0c5ff", "#396ccd"]; // Available colors
 
-// contentDiv.innerHTML = data.map(item => {
-//     return `
-//     <!-- Page 1: Section Title -->
-//     <div class="page0" style="background-color: #b0c5ff;">
-//         <div class="section-title">
-//             <h1>${item.section}</h1>
-//         </div>
-//     </div>
-
-//     <!-- Pages for Each Subheading with Image on the Left & Text on the Right -->
-//     ${Object.keys(item)
-//             .filter(key => key.startsWith("heading"))
-//             .map((key, index) => {
-//                 const textKey = key.replace("heading", "text"); // Get corresponding text key
-//                 const imgKey = `img${index}`; // Match images sequentially
-//                 const randomColor = "#396ccd"; // Pick a random color
-
-//                 return `
-//             <div class="page content-container" style="background-color: ${randomColor};">
-//                 <!-- Left: Image -->
-//                 <div class="image-container">
-//                     ${item[imgKey] ? `<img class="content-image" src="${item[imgKey]}" alt="image">` : ""}
-//                 </div>
-
-//                 <!-- Right: Subheading & Text -->
-//                 <div class="text-container">
-//                     <h2>${item[key] !== undefined ? item[key] : ""}</h2>
-//                     <p>${item[textKey] !== undefined ? item[textKey] : ""}</p>
-//                 </div>
-//             </div>`;
-//             }).join("")
-//         }`;
-// }).join('');
