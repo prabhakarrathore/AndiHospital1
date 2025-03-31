@@ -1,6 +1,6 @@
 const data = [
     {
-        "section": "Login",
+        // "section": "Login",
         "heading": "Login",
         "text": "Every feature is operating smoothly and only correct user role can login. If incorrect data is input, an error will be shown.",
         "img0": "./images/Login.png"
@@ -310,21 +310,14 @@ const data = [
 
 
 const contentDiv = document.getElementById("content");
-const colors = ["#b0c5ff", "#396ccd"]; // Available colors
+const colors = ["#b0c5ff", "#fff", "#396ccd"]; // Available colors
+// Log the random color index
 
 contentDiv.innerHTML = data.map((item, itemIndex) => {
     return (() => {
-        const randomColor = `${colors[itemIndex % 2]}`; // Generates a unique color for this item
-
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
         return `
-            <!-- Page 1: Section Title -->
-            <div class="page0" style="background-color: ${randomColor};">
-                <div class="section-title">
-                    <h1>${item.section}</h1>
-                </div>
-            </div>
-    
-            <!-- Pages for Each Subheading with Image on the Left & Text on the Right -->
+          <!-- Pages for Each Subheading with Image on the Left & Text on the Right -->
             ${Object.keys(item)
                 .filter(key => key.startsWith("heading"))
                 .map((key, index) => {
@@ -333,21 +326,44 @@ contentDiv.innerHTML = data.map((item, itemIndex) => {
 
                     return `
                     <div class="page content-container" style="background-color: ${randomColor};">
-                        <!-- Left: Image -->
-                        <div class="image-container">
-                            ${item[imgKey] ? `<img class="content-image" src="${item[imgKey]}" alt="image"  loading="lazy">` : ""}
-                        </div>
-    
-                        <!-- Right: Subheading & Text -->
-                        <div class="text-container">
-                            <h2>${item[key] !== undefined ? item[key] : ""}</h2>
-                            <p>${item[textKey] !== undefined ? item[textKey] : ""}</p>
-                        </div>
+                    <!-- Left: Image -->
+                    ${item[imgKey] ? ` <div class="image-container"><img class="content-image" src="${item[imgKey]}" alt="image"  loading="lazy"></div>` : ""}
+                    
+                    <!-- Right: Subheading & Text -->
+                    
+                    <div class="text-container">
+                    <div class="section-title">
+                    <h1>${item.section !== undefined ? item.section : ""}</h1>
+                    </div>
+                    <h2>${item[key] !== undefined ? item[key] : ""}</h2>
+                    <p>${item[textKey] !== undefined ? item[textKey] : ""}</p>
+                    </div>
                     </div>`;
                 }).join("")
             }
         `;
     })();
-
 }).join('');
+function generateCirclePositions() {
+    return Array.from({ length: 1000 }, () => ({
+        x: Math.floor(Math.random() * window.innerWidth - 150),  // Full width
+        y: Math.floor(Math.random() * document.body.scrollHeight) // Full height
+    }));
+}
 
+function placeCircles() {
+    const positions = generateCirclePositions();
+    const container = document.body; // Append circles to the full document
+
+    positions.forEach((pos) => {
+        const circle = document.createElement("div");
+        circle.classList.add("circle1");
+        circle.style.position = "absolute";
+        circle.style.left = `${pos.x}px`;
+        circle.style.top = `${pos.y}px`;
+        container.appendChild(circle);
+    });
+}
+
+// Run the function when the page loads
+window.onload = placeCircles;

@@ -6,123 +6,190 @@
 
 .page0 {
     page-break-after: always;
-    padding: 50px;
     text-align: start;
+    z-index: 0;
 }
 
 .page {
+    z-index: 0;
+    height: 100vh;
     page-break-after: always;
-    /* Forces new page when printing */
-    padding: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 5%;
+    padding: 10%;
 }
 
 /* Section Title */
 .section-title {
-    font-size: 40px;
+    font-size: 3vw;
+    /* Scales dynamically */
     font-weight: bold;
     color: #05066d;
-    /* padding: 100px 0; */
+    padding: 8% 0;
 }
 
-/* Subheading & Image Layout */
+/* Content Layout */
 .content-container {
+    height: 100%;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: auto;
-    margin: auto;
     text-align: left;
     gap: 20px;
+    border: 10px solid #FFF;
+    padding: 2%;
 }
 
-/* Image on the Left */
+/* Image Styling */
 .image-container {
     flex: 1;
+    z-index: 2;
+    padding: 0;
+    aspect-ratio: 16/9;
+    height: auto;
     display: flex;
     justify-content: center;
 }
 
 .content-image {
-    width: 100%;
-    height: auto;
-    max-width: 500px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    height: auto;
 }
 
-/* Text on the Right */
+/* Text Styling */
 .text-container {
+    z-index: 2;
+    width: 50%;
     flex: 1;
-    padding-left: 40px;
+    padding-left: 5%;
 }
 
 .text-container h2 {
-    font-size: 56pt;
+    font-size: 4vw;
+    /* Scales dynamically */
     color: #05066d;
 }
 
 .text-container p {
-    font-size: 30pt;
+    font-size: 1.8vw;
+    /* Scales dynamically */
     color: #252b5b;
     margin-top: 10px;
 }
 
 /* === RESPONSIVE DESIGN === */
 
-/* For Tablets (768px and below) */
-@media (max-width: 768px) {
+/* For Laptops (1024px and above) */
+@media (min-width: 1024px) {
+    .text-container h2 {
+        font-size: 3.5vw;
+    }
+
+    .text-container p {
+        font-size: 1.5vw;
+    }
+}
+
+/* For Tablets (768px - 1023px) */
+@media (max-width: 1023px) {
     .content-container {
         flex-direction: column;
         text-align: center;
     }
 
     .image-container {
+        width: 100%;
         order: -1;
-        /* Moves the image above the text */
     }
 
     .text-container {
         padding-left: 0;
+        width: 80%;
     }
 
     .text-container h2 {
-        font-size: 40pt;
+        font-size: 4.5vw;
     }
 
     .text-container p {
-        font-size: 24pt;
+        font-size: 2vw;
     }
 }
 
-/* For Smartphones (480px and below) */
-@media (max-width: 480px) {
+/* For Smartphones (480px - 767px) */
+@media (max-width: 767px) {
 
     .page,
     .page0 {
-        padding: 10px;
+        padding: 5%;
     }
 
     .section-title {
-        font-size: 1.9em;
-        padding: 0px;
+        font-size: 5vw;
+        padding: 5%;
     }
 
     .content-container {
         flex-direction: column;
         text-align: center;
-        padding: 0.5em 0;
-        border: 2px solid #05066d;
+        padding: 5%;
+        border: 5px solid #05066d;
     }
 
     .image-container {
-        order: -1;
-        /* Moves the image above the text */
+
+        width: 50%;
+    }
+
+    .content-image {
+        max-width: 100%;
+        border-radius: 5px;
+    }
+
+    .text-container {
+        width: 90%;
+        padding: 5%;
+    }
+
+    .text-container h2 {
+        font-size: 5vw;
+    }
+
+    .text-container p {
+        font-size: 2.5vw;
+    }
+}
+
+/* For Smallest Smartphones (320px - 479px) */
+@media (max-width: 479px) {
+
+    .page,
+    .page0 {
+        padding: 5%;
+    }
+
+    .section-title {
+        font-size: 6vw;
+        padding: 5%;
+    }
+
+    .content-container {
+        height: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 5%;
+        border: 3px solid #05066d;
+    }
+
+    .image-container {
+        width: 50%;
     }
 
     .content-image {
@@ -131,14 +198,28 @@
     }
 
     .text-container {
-        padding: 0.5em;
+        height: 100%;
+        width: 100%;
+        padding: 5%;
     }
 
     .text-container h2 {
-        font-size: 1.4em;
+        font-size: 6vw;
     }
 
     .text-container p {
-        font-size: 1em;
+        font-size: 3vw;
     }
+}
+
+
+.circle1 {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #edf3fb;
+    filter: blur(30px);
+    position: absolute;
+    /* opacity: 0.; */
+    z-index: 0;
 }
