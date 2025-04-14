@@ -4,33 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andi Hospital1</title>
+    <title>ANDi Hospital Software</title>
+    <!-- Link Swiper's CSS (for the slider) -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
-    <main class="page content-container" style="background-color: #b0c5ff;">
-        <!-- Left: Image -->
-        <section class="image-container">
-            <img class="content-image" src="./images/doc.jpg" style="mix-blend-mode: multiply; box-shadow: none;"
-                height="100%" width="100%" alt="image">
-        </section>
+    <header class="site-header">
+        <div class="logo-container">
+            <!-- You can replace text with a logo image -->
+            <a href="#" id="home-link" class="logo-text">ANDi Hospital</a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" id="nav-home">Home</a></li>
+                <li><a href="#" id="nav-about">About Software</a></li>
+                <li><a href="#" id="nav-admin">Admin Features</a></li>
+                <li><a href="#" id="nav-user">User Features</a></li>
+                <!-- Add other links if needed -->
+            </ul>
+        </nav>
+        <div class="header-contact">
+            <!-- Optional: Keep contact info accessible -->
+            <span>Prabhakar Rathore</span> | <span>8287744079</span>
+        </div>
+    </header>
 
-        <!-- Right: Subheading & Text -->
-        <section class="text-container">
-            <h2>ANDi Hospital1</h2>
-            <p style="margin-top:50% ;">Name : Prabhakar Rathore </p>
-            <p>Phone No. : 8287744079</p>
-            <p> Email : prabhakarrathore15@gmail.com</p>
-        </section>
+    <!-- This main container will hold the content of the selected page -->
+    <main id="page-content">
+        <!-- Content will be loaded here by JavaScript -->
     </main>
-    <main id="content"></main>
 
-    <script src="./script.js">
+    <footer class="site-footer">
+        <p>© 2024 ANDi Hospital Software. All rights reserved.</p>
+        <p>Developed by Prabhakar Rathore | <a
+                href="mailto:prabhakarrathore15@gmail.com">prabhakarrathore15@gmail.com</a></p>
+    </footer>
 
+    <!-- Background Circles Container (Optional) -->
+    <div id="background-circles"></div>
 
-    </script>
+    <!-- Link Swiper's JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Link your custom script -->
+    <script src="./script.js"></script>
 
 </body>
 

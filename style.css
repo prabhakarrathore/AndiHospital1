@@ -1,39 +1,267 @@
+/* --- Additions / Modifications to existing style.css --- */
+
+/* Basic Reset & Body */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    font-family: sans-serif;
+    /* Choose a suitable font */
+    line-height: 1.6;
+    background-color: #f4f7fc;
+    /* Light background for the overall page */
+    color: #333;
+    display: flex;
+    /* Use flexbox for layout */
+    flex-direction: column;
+    /* Stack header, main, footer */
+    min-height: 100vh;
+    /* Ensure footer stays at bottom */
+}
+
+/* --- Header --- */
+.site-header {
+    background-color: #05066d;
+    /* Dark blue */
+    color: #fff;
+    padding: 15px 5%;
+    /* Padding top/bottom and left/right */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container .logo-text {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    /* Space between nav items */
+}
+
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 5px 0;
+    border-bottom: 2px solid transparent;
+    /* For active state */
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    /* Style for the active link */
+    color: #b0c5ff;
+    /* Lighter blue on hover/active */
+    border-bottom-color: #b0c5ff;
+}
+
+.header-contact {
+    font-size: 0.9em;
+    text-align: right;
+}
+
+/* --- Main Content Area --- */
+#page-content {
+    flex-grow: 1;
+    /* Allows main content to take available space */
+    width: 100%;
+    padding: 0;
+    /* Remove default padding if any */
+    /* The .page class styles will apply to content loaded here */
+}
+
+/* --- Footer --- */
+.site-footer {
+    background-color: #252b5b;
+    /* Darker shade */
+    color: #eee;
+    text-align: center;
+    padding: 20px 5%;
+    margin-top: auto;
+    /* Pushes footer to bottom */
+    font-size: 0.9em;
+}
+
+.site-footer a {
+    color: #b0c5ff;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* --- Slider Styles (Swiper) --- */
+.home-slider {
+    width: 100%;
+    /* height: 400px; /* Adjust height as needed */
+    /* max-height: 70vh; */
+    background-color: #ddd;
+    /* Placeholder background */
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Prevent image overflow */
+    position: relative;
+    /* For text overlay */
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cover the slide area */
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+/* --- About Page Styles --- */
+.about-section,
+.modules-section {
+    background-color: #fff;
+    margin: 30px auto;
+    /* Center section */
+    padding: 40px;
+    max-width: 900px;
+    /* Limit width for readability */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.about-section h1,
+.modules-section h2 {
+    color: #05066d;
+    margin-bottom: 20px;
+}
+
+.modules-list {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.modules-list li {
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+
+/* --- Feature Page Container --- */
+/* This will wrap the dynamically generated feature pages */
+.features-container {
+    padding: 20px 5%;
+    /* Add some padding around the feature blocks */
+    display: flex;
+    /* Optional: Use flexbox for layout if needed */
+    flex-direction: column;
+    gap: 30px;
+    /* Space between feature blocks */
+}
+
+/* --- Responsive Adjustments for Header/Nav --- */
+@media (max-width: 767px) {
+    .site-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .header-contact {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    /* Adjust feature page padding on smaller screens */
+    .features-container {
+        padding: 15px 3%;
+    }
+
+    .about-section,
+    .modules-section {
+        padding: 25px;
+        margin: 20px 5%;
+    }
+
+}
+
+/* --- Keep your existing .page, .content-container, etc. styles --- */
+/* They will be used for the feature blocks */
+
 .page0 {
+    /* Probably not needed anymore, but keep if used elsewhere */
     page-break-after: always;
     text-align: start;
     z-index: 0;
 }
 
 .page {
-    z-index: 0;
-    height: 100vh;
-    page-break-after: always;
+    /* Modify this: Remove height: 100vh, page-break-after */
+    /* height: 100vh; */
+    /* page-break-after: always; */
     display: flex;
     flex-direction: column;
+    /* Keep this if content-container relies on it */
     align-items: center;
     text-align: center;
-    padding: 5%;
-    padding: 10%;
+    /* padding: 5%; remove or adjust, padding is on features-container now */
+    /* padding: 10%; */
+    width: 100%;
+    /* Ensure it takes full width within features-container */
+    margin-bottom: 30px;
+    /* Add space between feature blocks */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Optional: add shadow to each feature block */
+    border-radius: 10px;
+    /* Optional: round corners */
+    overflow: hidden;
+    /* Ensure content stays within rounded corners */
+    background-color: #fff;
+    /* Default background for feature blocks */
 }
 
-/* Section Title */
-.section-title {
-    font-size: 3vw;
-    /* Scales dynamically */
-    font-weight: bold;
-    color: #05066d;
-    padding: 8% 0;
-}
-
-/* Content Layout */
+/* Adjust content-container if needed */
 .content-container {
-    height: 100%;
+    height: auto;
+    /* Let height be determined by content */
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -41,185 +269,208 @@
     width: 100%;
     text-align: left;
     gap: 20px;
-    border: 10px solid #FFF;
-    padding: 2%;
+    /* border: 10px solid #FFF; Remove this border maybe? */
+    padding: 3%;
+    /* Adjust padding */
 }
 
 /* Image Styling */
 .image-container {
     flex: 1;
+    /* Keep this */
     z-index: 2;
+    /* Keep this */
     padding: 0;
-    aspect-ratio: 16/9;
+    /* Keep this */
+    /* aspect-ratio: 16/9; remove this to allow natural image aspect ratio */
     height: auto;
+    /* Keep this */
     display: flex;
     justify-content: center;
+    max-width: 50%;
+    /* Limit image width */
 }
 
 .content-image {
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Soften shadow */
     max-width: 100%;
     height: auto;
+    display: block;
+    /* Prevents bottom space */
 }
 
 /* Text Styling */
 .text-container {
     z-index: 2;
-    width: 50%;
+    /* width: 50%; Remove fixed width */
     flex: 1;
-    padding-left: 5%;
+    /* Keep this */
+    padding-left: 3%;
+    /* Adjust padding */
+    padding-right: 3%;
 }
 
 .text-container h2 {
-    font-size: 4vw;
-    /* Scales dynamically */
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    /* Responsive font size */
     color: #05066d;
+    margin-bottom: 15px;
+    /* Add space below heading */
 }
 
 .text-container p {
-    font-size: 1.8vw;
-    /* Scales dynamically */
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    /* Responsive font size */
     color: #252b5b;
     margin-top: 10px;
+    /* Keep this */
 }
 
-/* === RESPONSIVE DESIGN === */
-
-/* For Laptops (1024px and above) */
-@media (min-width: 1024px) {
-    .text-container h2 {
-        font-size: 3.5vw;
-    }
-
-    .text-container p {
-        font-size: 1.5vw;
-    }
+/* Section Title inside feature blocks */
+.section-title {
+    /* font-size: 3vw; */
+    /* Handled by h1 inside */
+    font-weight: bold;
+    color: #396ccd;
+    /* Lighter blue for section title */
+    padding: 0 0 15px 0;
+    /* Adjust padding */
+    text-align: left;
+    /* Align section title left */
+    width: 100%;
+    /* Take full width */
+    border-bottom: 1px solid #eee;
+    /* Separator */
+    margin-bottom: 20px;
+    /* Space below title */
 }
 
-/* For Tablets (768px - 1023px) */
+.section-title h1 {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    /* Responsive font size */
+}
+
+
+/* Responsive adjustments for content-container */
 @media (max-width: 1023px) {
     .content-container {
         flex-direction: column;
         text-align: center;
+        padding: 5%;
+        /* Adjust padding */
     }
 
     .image-container {
-        width: 100%;
+        width: 80%;
+        /* Adjust width */
+        max-width: 400px;
+        /* Max width for image */
         order: -1;
+        /* Image comes first */
+        margin-bottom: 20px;
+        /* Space below image */
     }
 
     .text-container {
         padding-left: 0;
-        width: 80%;
-    }
-
-    .text-container h2 {
-        font-size: 4.5vw;
-    }
-
-    .text-container p {
-        font-size: 2vw;
-    }
-}
-
-/* For Smartphones (480px - 767px) */
-@media (max-width: 767px) {
-
-    .page,
-    .page0 {
-        padding: 5%;
-    }
-
-    .section-title {
-        font-size: 5vw;
-        padding: 5%;
-    }
-
-    .content-container {
-        flex-direction: column;
-        text-align: center;
-        padding: 5%;
-        border: 5px solid #05066d;
-    }
-
-    .image-container {
-
-        width: 50%;
-    }
-
-    .content-image {
-        max-width: 100%;
-        border-radius: 5px;
-    }
-
-    .text-container {
         width: 90%;
-        padding: 5%;
-    }
-
-    .text-container h2 {
-        font-size: 5vw;
-    }
-
-    .text-container p {
-        font-size: 2.5vw;
-    }
-}
-
-/* For Smallest Smartphones (320px - 479px) */
-@media (max-width: 479px) {
-
-    .page,
-    .page0 {
-        padding: 5%;
+        /* Adjust width */
+        text-align: center;
+        /* Center text */
     }
 
     .section-title {
-        font-size: 6vw;
-        padding: 5%;
+        text-align: center;
+        /* Center section title */
+    }
+
+    /* Font sizes already handled by clamp() */
+}
+
+@media (max-width: 767px) {
+    .page {
+        /* padding: 5%; */
+        /* Handled by features-container */
+        margin-bottom: 20px;
+        /* Adjust space */
     }
 
     .content-container {
-        height: 100%;
-        flex-direction: column;
-        text-align: center;
-        padding: 5%;
-        border: 3px solid #05066d;
+        padding: 6%;
+        /* border: 5px solid #05066d; Remove border */
+        gap: 15px;
     }
 
     .image-container {
-        width: 50%;
-    }
-
-    .content-image {
-        max-width: 90%;
-        border-radius: 5px;
+        width: 90%;
+        /* Adjust width */
     }
 
     .text-container {
-        height: 100%;
         width: 100%;
-        padding: 5%;
+        padding: 0 5%;
+        /* Padding left/right */
     }
 
-    .text-container h2 {
-        font-size: 6vw;
-    }
-
-    .text-container p {
-        font-size: 3vw;
-    }
+    /* Font sizes already handled by clamp() */
 }
 
+@media (max-width: 479px) {
+    .page {
+        margin-bottom: 15px;
+    }
+
+    .content-container {
+        padding: 8% 5%;
+        /* More vertical padding */
+        /* border: 3px solid #05066d; Remove border */
+    }
+
+    .image-container {
+        width: 100%;
+        /* Full width image container */
+    }
+
+    .text-container {
+        width: 100%;
+        padding: 0 3%;
+        /* Adjust padding */
+    }
+
+    /* Font sizes already handled by clamp() */
+}
+
+
+/* --- Background Circles --- */
+/* Keep your .circle1 styles, but maybe adjust opacity or blur */
+#background-circles {
+    position: fixed;
+    /* Keep circles fixed in background */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Behind everything */
+    overflow: hidden;
+    /* Prevent scrollbars */
+    pointer-events: none;
+    /* Allow clicking through */
+}
 
 .circle1 {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     background-color: #edf3fb;
-    filter: blur(30px);
+    /* Keep original color */
+    filter: blur(40px);
+    /* Increase blur? */
     position: absolute;
-    /* opacity: 0.; */
-    z-index: 0;
+    opacity: 0.6;
+    /* Adjust opacity */
+    z-index: -1;
+    /* Ensure it's behind content */
 }
